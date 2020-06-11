@@ -89,7 +89,6 @@ function RoomFilter({ rooms }) {
               type="number"
               name="minSize"
               id="size"
-              className="form-control"
               onChange={handleChange}
               value={minSize}
             ></input>
@@ -98,7 +97,6 @@ function RoomFilter({ rooms }) {
               type="number"
               name="maxSize"
               id="size"
-              className="form-control"
               onChange={handleChange}
               value={maxSize}
             ></input>
@@ -110,10 +108,8 @@ function RoomFilter({ rooms }) {
               type="checkbox"
               name="breakfast"
               id="breakfast"
-              className="form-control"
               onChange={handleChange}
               checked={breakfast}
-              value={breakfast}
             ></input>
             <label htmlFor="breakfest">breakfast</label>
           </div>
@@ -122,10 +118,8 @@ function RoomFilter({ rooms }) {
               type="checkbox"
               name="pets"
               id="pets"
-              className="form-control"
               onChange={handleChange}
               checked={pets}
-              value={pets}
             ></input>
             <label htmlFor="pets">pets</label>
           </div>
@@ -134,6 +128,7 @@ function RoomFilter({ rooms }) {
     </div>
   );
 }
+export default RoomFilter;
 // HOOK can be called only in function
 
 /*class RoomFilter extends React.Component{
@@ -165,5 +160,3 @@ function RoomFilter({ rooms }) {
         )
     }
 }*/
-
-export default RoomFilter;
