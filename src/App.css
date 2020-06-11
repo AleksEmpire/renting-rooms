@@ -11,8 +11,8 @@
   --mainBlack: #222;
   --mainGrey: #ececec;
   --darkGrey: #cfcfcf;
-  --darkPurple: #1B1E25;
-  --gold: #C39937;
+  --darkPurple: #1b1e25;
+  --gold: #c39937;
   --mainTransition: all 0.3s linear;
   --mainSpacing: 3px;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
@@ -439,6 +439,7 @@ h6 {
 .single-room-images img {
   width: 100%;
   display: block;
+  cursor: pointer;
 }
 
 .single-room-info {
@@ -491,7 +492,6 @@ h6 {
 }
 
 @media screen and (min-width: 992px) {
-
   .single-room-images,
   .single-room-info,
   .room-extras {

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 import Banner from "../components/banner/Banner.jsx";
 import { Link } from "react-router-dom";
 import { Context } from "../Context.jsx";
@@ -9,16 +11,31 @@ class SingleRoom extends Component {
     super(props);
     this.state = {
       slug: this.props.match.params.slug,
+      isModalOpen: false,
+      imgOpenSrc: "",
     };
   }
 
   state = {
     slug: this.props.match.params.slug,
   };
+
   static contextType = Context;
+  modalOpen = (e) => {
+    let imgSrc = e.target.src;
+    this.setState({
+      isModalOpen: true,
+      imgOpenSrc: imgSrc,
+    });
+    console.log("open");
+    console.log(`Tip ${typeof e.target.src}`);
+  };
+
   render() {
     const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
+    const { imgOpenSrc } = this.state;
+
     if (!room) {
       return (
         <div className="error">
@@ -51,9 +68,33 @@ class SingleRoom extends Component {
         </StyledHero>
         <div className="single-room">
           <div className="single-room-images">
-            {images.map((item, index) => (
-              <img key={index} src={item} alt={name} />
-            ))}
+            {images.map((item, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <img src={item} alt={name} onClick={this.modalOpen} />
+                  {this.state.isModalOpen && (
+                    <Lightbox
+                      mainSrc={imgOpenSrc}
+                      // nextSrc={item[(index + 1) % item.length]}
+                      // prevSrc={item[(index + item.length - 1) % item.length]}
+                      onCloseRequest={() =>
+                        this.setState({ isModalOpen: false })
+                      }
+                      // onMovePrevRequest={() =>
+                      //   this.setState({
+                      //     photoIndex: (index + images.length - 1) % images.length,
+                      //   })
+                      // }
+                      // onMoveNextRequest={() =>
+                      //   this.setState({
+                      //     photoIndex: (index + 1) % images.length,
+                      //   })
+                      // }
+                    />
+                  )}
+                </React.Fragment>
+              );
+            })}
           </div>
           <div className="single-room-info">
             <div className="description">
