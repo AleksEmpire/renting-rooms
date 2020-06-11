@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Hero from "../components/styledHero/StyledHero";
+import Hero from "../components/hero/Hero.jsx";
 import Banner from "../components/banner/Banner.jsx";
 import { Link } from "react-router-dom";
 import Services from "../components/services/Services.jsx";
